@@ -1,0 +1,84 @@
+@charset "utf-8";
+
+/* 밑줄 꾸밈 */
+.underline { position: relative; cursor: pointer; }
+
+.underline::before {
+    position: absolute;
+    top: 100%; left: 0;
+    content: "";
+    width: 100%; height: 5%;
+    background-color: var(--sub-color);
+}
+
+.underline, .underline::before { transition: background-color var(--animate), color var(--animate); }
+
+/* 밑줄 꾸밈 마우스 효과 */
+.underline:is(:hover, :focus-visible) { color: var(--strong-color); }
+.underline:is(:hover, :focus-visible)::before { background-color: var(--strong-color); }
+
+/* ------------------------------ */
+
+/* 배경 */
+#backgroundContainer > video { display: none; }
+
+/* ------------------------------ */
+
+/* 첫 페이지 */
+#first { position: relative; height: clamp(600px, 100vh, 100vh); }
+
+/* 플랫폼 컨테이너 */
+#platformContainer {
+    position: absolute;
+    bottom: var(--length-100); left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 플랫폼 컨테이너 텍스트 */
+#platformContainer > p { top: calc(var(--length-30) * -1); }
+
+/* ------------------------------ */
+
+/* 컨텐츠 페이지 */
+
+/* 탭 메뉴 */
+#contentTabList > li.on { color: var(--strong-color); }
+#contentTabList > li.on::before { background-color: var(--strong-color); }
+
+/* 슬라이드 이미지 목록 */
+#contentImageList {
+    position: relative;
+    width: clamp(350px, var(--length-1162), 1162px);
+    height: clamp(150px, var(--length-498), 498px);
+}
+
+/* 슬라이드 이미지 목록 */
+#contentImageList > li { display: none; position: absolute; }
+#contentImageList > li.on { display: block; }
+
+/* 슬라이드 이미지 */
+#contentImageList > li > a > img {
+    display: block;
+    width: 100%; height: 100%; 
+    object-fit: contain;
+}
+
+/* ------------------------------ */
+
+/* 커뮤니티 페이지 */
+
+/* SNS 목록 항목 아이콘 */
+#snsList > li > a > svg {
+    height: clamp(25px, var(--length-50), 50px);
+    transition: fill var(--animate);
+}
+
+/* SNS 목록 항목 아이콘 마우스 효과 */
+#snsList > li:is(:hover, :focus-visible) > a > svg { fill: var(--strong-color); }
+
+/* ------------------------------ */
+
+/* 뉴스레터 페이지 */
+
+/* 뉴스레터 배경 */
+#newsLetter > div { background: url("../img/Home/Newsletter.png") no-repeat center / contain; }
